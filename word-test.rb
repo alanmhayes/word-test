@@ -12,23 +12,26 @@ def read_input(  input_file  )
   return input
 end
 
-#write output to files
-def write_output(  output_hash  )
-  open('sequences.txt', 'w') { |f|
-    f.puts output_hash.keys
-    puts 'Sequences: ' + output_hash.keys.to_s
-  }
-
-  open('words.txt', 'w') { |f|
-    f.puts output_hash.values
-    puts 'Words: ' + output_hash.values.to_s
+#write output to file
+def write_output(  title, entries  )
+  open(title+'.txt', 'w') { |f|
+    f.puts entries
+    puts title+': '+entries.to_s
   }
 end
 
+#main function
+def main
+  input = read_input 'dictionary.txt'
+  output = {'carr' => 'carrots', 'give' => 'give'} #TODO replace with real string parsing
+  write_output 'sequences', output.keys
+  write_output 'words', output.values
+end
 
-read_input 'dictionary.txt'
-output = {'carr' => 'carrots', 'give' => 'give'} #TODO replace with real string parsing
-write_output output
+main
+
+
+
 
 
 
