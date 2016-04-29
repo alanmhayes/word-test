@@ -1,23 +1,36 @@
 #A program which, given a dictionary, generates two output files, 'sequences' and 'words'. 'sequences' contains every sequence of four letters that appears in exactly one word of the dictionary, one sequence per line. 'words' contains the corresponding words that contain the sequences, in the same order, again one per line.
 
-input = []
-open('dictionary.txt', "r") do |f|
-  f.each_line do |line|
-    input << line
+#read from input file
+def read_input(  input_file  )
+  input = []
+  open( input_file, "r" ) do |f|
+    f.each_line do |line|
+      input << line
+    end
   end
+  puts input
+  return input
 end
-puts input
 
-output = {'carr' => 'carrots'} #TODO replace with real string parsing
+#write output to files
+def write_output(  output_hash  )
+  open('sequences.txt', 'w') { |f|
+    f.puts output_hash.keys
+    puts 'Sequences: ' + output_hash.keys.to_s
+  }
 
-open('sequences.txt', 'w') { |f|
-  f.puts output.keys
-  puts 'Sequences: ' + output.keys.to_s
-}
+  open('words.txt', 'w') { |f|
+    f.puts output_hash.values
+    puts 'Words: ' + output_hash.values.to_s
+  }
+end
 
-open('words.txt', 'w') { |f|
-  f.puts output.values
-  puts 'Words: ' + output.values.to_s
-}
+
+read_input 'dictionary.txt'
+output = {'carr' => 'carrots', 'give' => 'give'} #TODO replace with real string parsing
+write_output output
+
+
+
 
 
