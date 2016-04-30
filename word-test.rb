@@ -49,7 +49,6 @@ end
 
 #main function
 def main
-  #lines = read_file 'dictionary.txt'
   lines = read_file 'https://s3.amazonaws.com/cyanna-it/misc/dictionary.txt'
   output = analyze lines
   write_file 'sequences', output.keys
