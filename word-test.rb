@@ -5,7 +5,7 @@ require 'open-uri'
 def read_file(  textfile  )
   input = []
   
-  open( textfile, "r" ) do |f|
+  open(textfile, "r") do |f|
     f.each_line do |line|
       input << line
     end
